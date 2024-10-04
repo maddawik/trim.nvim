@@ -10,8 +10,7 @@ local default_config = {
   trim_last_line = true,
   trim_first_line = true,
   highlight = false,
-  highlight_bg = '#ff0000',
-  highlight_ctermbg = 'red',
+  highlight_group = 'CurSearch',
   notifications = true,
 }
 
@@ -48,8 +47,7 @@ function M.setup(opts)
         if not vim.tbl_contains(M.config.ft_blocklist, vim.bo.filetype) then
           -- Apply highlighting for trailing whitespace
           vim.api.nvim_set_hl(0, 'ExtraWhitespace', {
-            bg = M.config.highlight_bg,
-            ctermbg = M.config.highlight_ctermbg,
+            link = M.config.highlight_group,
           })
           vim.api.nvim_exec('match ExtraWhitespace /\\s\\+$/', false)
         else
